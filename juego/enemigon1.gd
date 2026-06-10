@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy
+class_name player
 @onready var movimiento: Movimiento = $Movimiento
 var input_vector: Vector2 
 

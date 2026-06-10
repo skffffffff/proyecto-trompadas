@@ -1,13 +1,141 @@
 [gd_scene format=3 uid="uid://jtwsrjfj07id"]
 
-[ext_resource type="PackedScene" uid="uid://ciha4honlbkn6" path="res://ecenas/enemigo_1.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bilhgytqqehnh" path="res://ecenas/game.gd" id="1_wcsme"]
+[ext_resource type="PackedScene" uid="uid://ciha4honlbkn6" path="res://ecenas/enemigo_1.tscn" id="2_ohwwm"]
+[ext_resource type="Texture2D" uid="uid://c1spt1lytdhjo" path="res://2b083225b9fac1e7db5b77d0210274d0.jpg" id="3_71t4n"]
+
+[sub_resource type="Animation" id="Animation_nokq3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(580, -559)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1bmxc"]
+resource_name = "menu_back"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(580, -156), Vector2(580.00006, -285), Vector2(580, -446), Vector2(575, -556)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_ha5x6"]
+resource_name = "new_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5000001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(580, -559), Vector2(576, -373), Vector2(580, -202), Vector2(580, -156)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l3llk"]
+_data = {
+&"RESET": SubResource("Animation_nokq3"),
+&"menu_back": SubResource("Animation_1bmxc"),
+&"new_animation": SubResource("Animation_ha5x6")
+}
 
 [node name="game" type="Node2D" unique_id=277828066]
+script = ExtResource("1_wcsme")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=292613127]
 offset_right = 1153.0
 offset_bottom = 666.0
 
-[node name="enemigo 1" parent="." unique_id=1919323325 instance=ExtResource("1_80nbo")]
-position = Vector2(803, 483.00006)
+[node name="enemigo 1" parent="." unique_id=1919323325 instance=ExtResource("2_ohwwm")]
+position = Vector2(1032, 537.00006)
 scale = Vector2(2.8297873, 2.7381494)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1290214489]
+position = Vector2(580, -559)
+scale = Vector2(1.6034013, 1)
+texture = ExtResource("3_71t4n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=2118467046]
+libraries/ = SubResource("AnimationLibrary_l3llk")
+
+[node name="Button2" type="Button" parent="." unique_id=1706267271]
+visible = false
+offset_left = 471.0
+offset_top = 390.0
+offset_right = 653.0
+offset_bottom = 438.0
+theme_override_font_sizes/font_size = 29
+text = "cerrar menu
+"
+
+[node name="Button" type="Button" parent="." unique_id=297122767]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 487.0
+offset_top = -12.0
+offset_right = 636.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 23
+text = "abrir menu
+"
+
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button1_pressed"]
