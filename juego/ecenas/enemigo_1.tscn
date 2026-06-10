@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ciha4honlbkn6"]
+
+[ext_resource type="Script" uid="uid://brel1gql8pj7d" path="res://enemigon1.gd" id="1_q856w"]
+[ext_resource type="Texture2D" uid="uid://ca5f17wmw64tw" path="res://39_sin_titulo_20260610131713.webp" id="2_cjvkx"]
+[ext_resource type="PackedScene" uid="uid://brxmb2uc1gpg7" path="res://ecenas/movimiento.tscn" id="3_1x3o7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdgmj"]
+radius = 24.0
+height = 82.0
+
+[node name="enemigo 1" type="CharacterBody2D" unique_id=1919323325]
+script = ExtResource("1_q856w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=848209728]
+position = Vector2(1, -21)
+texture = ExtResource("2_cjvkx")
+hframes = 8
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2113199173]
+position = Vector2(4, -11)
+shape = SubResource("CapsuleShape2D_kdgmj")
+
+[node name="Movimiento" parent="." unique_id=438308547 instance=ExtResource("3_1x3o7")]
+speed = 50.0

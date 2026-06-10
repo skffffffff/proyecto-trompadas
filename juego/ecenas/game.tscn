@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://jtwsrjfj07id"]
+
+[ext_resource type="PackedScene" uid="uid://ciha4honlbkn6" path="res://ecenas/enemigo_1.tscn" id="1_80nbo"]
+
+[node name="game" type="Node2D" unique_id=277828066]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=292613127]
+offset_right = 1153.0
+offset_bottom = 666.0
+
+[node name="enemigo 1" parent="." unique_id=1919323325 instance=ExtResource("1_80nbo")]
+position = Vector2(803, 483.00006)
+scale = Vector2(2.8297873, 2.7381494)
